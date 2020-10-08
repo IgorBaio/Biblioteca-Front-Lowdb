@@ -51,11 +51,14 @@ function CadastroEmprestimo() {
 
       <form onSubmit={function handleSubmit(event) {
         event.preventDefault();
-        setValues(valoresIniciais);
-
-        pegarEmprestado(livro.id)
-        alert(`${livro.titulo} Emprestado`);
-        history.push('/');
+        if(values.nome === ''){
+          alert('O campo "Nome" deve ser preenchido');
+        }else{
+          setValues(valoresIniciais);
+          pegarEmprestado(livro.id)
+          alert(`${livro.titulo} Emprestado`);
+          history.push('/');
+        }
       }}
       >
 
