@@ -9,14 +9,17 @@ import Button from '../../../components/Button';
 import LivroService from '../../../service/livros.service'
 
 function CadastroEmprestimo() {
-  const valoresIniciais = {
-    nome: '',
-    descricao: '',
-    cor: '',
-  };
+  
   let location = useLocation();
   const [livro, setLivro] = useState(location.state);
-  const [emprestimos, setEmprestimos] = useState([]);
+  const [dateNow, setDateNow] = useState(new Date());
+  
+  const valoresIniciais = {
+    nome: '',
+    date: `${dateNow.getDate()}/${dateNow.getMonth()+1}/${dateNow.getFullYear()}`,
+    livroId: '',
+  };
+
   const [values, setValues] = useState(valoresIniciais);
 
   const pegarEmprestado = async (id) => {
@@ -49,18 +52,8 @@ function CadastroEmprestimo() {
       <form onSubmit={function handleSubmit(event) {
         event.preventDefault();
         setValues(valoresIniciais);
-        // let livrosArray = []
 
         pegarEmprestado(livro.id)
-
-        // const livrosEmprestados = localStorage.getItem('livros');
-        // if(livrosEmprestados !== null)
-          // livrosArray = JSON.parse(livrosEmprestados);
-         
-        // livrosArray.push(livro.id)
-        // localStorage.setItem("livros",JSON.stringify(livrosArray))
-
-
         
         history.push('/');
       }}
@@ -78,27 +71,23 @@ function CadastroEmprestimo() {
         <FormField
           label="Data de empréstimo:"
           inputType="date"
-          type="date"
-          name="descricao"
-          value={values.descricao}
-          onChange={handleChange}
+          type="input"
+          name="Data de empréstimo:"
+          value={values.date}
         />
 
         <FormField
           label="Livro:"
-          inputType="number"
-          type="number"
+          inputType="input"
+          type="text"
           name="livro"
-          value={location.state.id}
-          onChange={handleChange}
+          value={livro.titulo}
         />
-        
         
         <Button as={Button} type="submit">
           Cadastrar
         </Button>
 
-        
       </form>
       
     </PageDefault>

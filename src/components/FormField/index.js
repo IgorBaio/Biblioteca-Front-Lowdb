@@ -11,7 +11,7 @@ const FormFieldWrapper = styled.div`
   textarea {
     min-height: 150px;
   }
-  input[type="color"] {
+  input[type="number"] {
     padding-left: 56px;
   }
 `;
@@ -82,9 +82,8 @@ function FormField({
   label, value, inputType, type, name, onChange,
 }) {
   const fieldId = `id_${name}`;
-  const isTextArea = inputType === 'textarea';
-  const isNumber = inputType ==='number';
-  const tag = isTextArea ? 'textarea' : 'input';
+  const isDate = type === 'date';
+  const tag = isDate ? 'date' : 'input';
   return (
     <FormFieldWrapper>
       <Label
