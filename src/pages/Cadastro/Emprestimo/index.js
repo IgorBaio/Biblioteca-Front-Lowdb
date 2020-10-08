@@ -54,7 +54,7 @@ function CadastroEmprestimo() {
         setValues(valoresIniciais);
 
         pegarEmprestado(livro.id)
-        
+        alert(`${livro.titulo} Emprestado`);
         history.push('/');
       }}
       >
