@@ -8,9 +8,6 @@ function Footer() {
       <a href="https://github.com/IgorBaio">
       <img src={Logo} className="Logo" alt="BaioSystems"/>
       </a>
-      <p>
-        Biblioteca criada para testes.
-      </p>
     </FooterBase>
   );
 }
